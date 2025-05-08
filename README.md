@@ -1,69 +1,60 @@
-# ISA project team 35
+# ISA Project – Team 35
 
-U okviru projektnog zadatka iz predmeta Internet softverske arhitekture, implementirana je web aplikacija, koja predstavlja centralizovani informacioni sistem kompanija za nabavku medicinske opreme, preko kojeg će privatne bolnice moći da rezervišu i preuzmu opremu. Osnovna namena aplikacije je vođenje evidencije o zaposlenima, registrovanim kompanijama, rezervacijama opreme i terminima preuzimanja.
+As part of the course Internet Software Architectures, we implemented a web application that serves as a centralized information system for companies supplying medical equipment. Through this system, private hospitals can reserve and collect medical equipment. The main purpose of the application is to manage records of employees, registered companies, equipment reservations, and pickup schedules.
 
-## Uputstvo za pokretanje aplikacije za rezervaciju medicinske opreme
+## Medical Equipment Reservation Application – Setup Guide
 
-Ovde se nalazi detaljno uputstvo o tome kako pokrenuti projekat za rezervisanje medicinske opreme na čistoj mašini. Projekat se sastoji od Spring Boot aplikacije za backend, Angular aplikacije za frontend, kao i dve eksterne Python skripte za simulaciju lokacija i ugovora. Za bazu podataka koristi se PostgreSQL, a za međusobnu komunikaciju aplikacija RabbitMQ.
+This guide explains how to run the medical equipment reservation project on your machine. The project consists of a Spring Boot backend, an Angular frontend, and two external Python scripts for simulating locations and contracts. It uses PostgreSQL as the database and RabbitMQ for inter-application communication.
 
-### Instalacija neophodnih alata
+### Required Tools
 
 1. **IntelliJ IDEA (Backend)**
 
-   - Posetite [zvaničnu stranicu IntelliJ IDEA](https://www.jetbrains.com/idea/download/) i preuzmite Community verziju.
-   - Instalirajte IntelliJ IDEA na vašem računaru.
+   - Download and install IntelliJ IDEA Community Edition: https://www.jetbrains.com/idea/download.
 
 2. **Visual Studio Code (Frontend)**
 
-   - Preuzmite [Visual Studio Code](https://code.visualstudio.com/download) sa zvanične stranice.
-   - Instalirajte Visual Studio Code na vašem računaru.
+   - Download and install Visual Studio Code: https://code.visualstudio.com/download.
 
-3. **Node.js i npm (Frontend)**
+3. **Node.js and npm (Frontend)**
 
-   - Posetite [zvaničnu stranicu Node.js](https://nodejs.org/) i preuzmite LTS verziju.
-   - Instalirajte Node.js i npm na vašem računaru.
+   - Download and install the LTS version of Node.js: https://nodejs.org/.
 
 4. **Angular CLI (Frontend)**
 
-   - Otvorite terminal (Command Prompt, PowerShell, ili Terminal na Linuxu/Mac-u) i izvršite komandu: `npm install -g @angular/cli`.
+   - Open a terminal and run: `npm install -g @angular/cli`.
 
-5. **PostgreSQL (Baza podataka)**
+5. **PostgreSQL (Database)**
 
-   - Preuzmite i instalirajte [PostgreSQL](https://www.postgresql.org/download/).
-   - Kreirajte bazu podataka za projekat i nazovite je "isa". Baza će biti pokrenuta lokalno na podrazumevanom portu 5432.
+   - Download and install PostgreSQL: https://www.postgresql.org/download/.
+   - Create a database named isa. It will run locally on the default port 5432.
 
 6. **RabbitMQ (Message Broker)**
 
-   - Preuzmite i instalirajte [RabbitMQ](https://www.rabbitmq.com/download.html).
-   - Pokrenite Erlang pre RabbitMQ instalacije, a zatim pokrenite RabbitMQ (Management UI će biti dostupan na portu 15672, dok RabbitMQ radi na portu 5672).
+   - Download and install RabbitMQ: https://www.rabbitmq.com/download.html.
+   - Install Erlang first, then start RabbitMQ (management UI - http://localhost:15672/ and default port - 5672).
 
-7. **Python (Simulacija lokacija i ugovora)**
-   - Posetite [zvaničnu stranicu Pythona](https://www.python.org/downloads/) i preuzmite Python verziju 3.x.
-   - Instalirajte Python na vašem računaru.
+7. **Python (Location and Contract Simulation)**
 
-### Kloniranje ili preuzimanje repozitorijuma
+   - Download and install Python 3.x: https://www.python.org/downloads/.
 
-- Klonirajte ili preuzmite repozitorijum sa [https://github.com/MiljanaMa/ISA](https://github.com/MiljanaMa/ISA).
+## Running the Application
 
-### Pokretanje Backend aplikacije (Spring Boot)
+### Backend (Spring Boot)
 
-1. Otvorite IntelliJ IDEA.
-2. Importujte projekat.
-3. Podešavanje baze podataka: U `application.properties` fajlu postavite podatke za povezivanje sa PostgreSQL bazom podataka. Inicijalno, baza se zove "isa" i radi na portu 5432.
-4. Pronađite klasu `Application` u `src/main/java` i pokrenite je.
+1. Open IntelliJ IDEA and import the project.
+2. In application.properties, configure PostgreSQL database credentials.
+3. Run the Application class in src/main/java.
 
-### Pokretanje Frontend aplikacije (Angular)
+### Frontend (Angular)
 
-1. Otvorite Visual Studio Code.
-2. Otvorite folder `med-equip-system-front`.
-3. Otvorite terminal u Visual Studio Code-u.
-4. Izvršite komandu: `npm install` za instalaciju zavisnosti.
-5. Nakon instalacije, izvršite komandu: `ng serve` za pokretanje Angular aplikacije.
-6. Aplikacija će biti dostupna na `http://localhost:4200/` u vašem web pregledaču.
+1. Open the med-equip-system-front folder in Visual Studio Code.
+2. Open a terminal and run: `npm install`.
+3. Then run: `ng serve`.
+4. The application will be available at: http://localhost:4200/.
 
-### Pokretanje Python skripti za simulaciju lokacija i ugovora
+### Python Scripts (Location and Contract Simulation)
 
-1. Otvorite terminal.
-2. Navigirajte do foldera sa Python skriptama (`med-equip-system-contract-sim` i `med-equip-system-location-simulator`).
-3. Instalirajte neophodne biblioteke iz `requirements.txt` komandom: `pip install -r requirements.txt`.
-4. Pokrenite skripte komandama: `python main.py` za simulaciju slanja informacija o ugovorima i koordinatama glavnoj aplikaciji.
+1. Navigate to the folders med-equip-system-contract-sim and med-equip-system-location-simulator.
+2. Install dependencies: `pip install -r requirements.txt`.
+3. Run the simulation scripts: `python main.py`.
